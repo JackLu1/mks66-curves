@@ -56,6 +56,7 @@ def parse_file( fname, edges, transform, screen, color ):
         if line in ARG_COMMANDS:
             c+= 1
             args = lines[c].strip().split(' ')
+            print 'ARGS'
 
         if line == 'line':            
             #print 'LINE\t' + str(args)
@@ -90,7 +91,8 @@ def parse_file( fname, edges, transform, screen, color ):
             ident(transform)
 
         elif line == 'circle':
-            pass
+            #add_circle(edges, args[0], args[1], args[2], args[3], 0.1)
+            print 'circle'
         
         elif line == 'hermite':
             pass

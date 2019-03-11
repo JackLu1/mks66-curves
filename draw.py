@@ -3,18 +3,20 @@ from matrix import *
 
 
 def add_circle( points, cx, cy, cz, r, step ):
-    pass
+    t = step / (2 * math.pi)
+    while t < 2 * math.pi:
+        x0 = cx + r * math.cos(t)
+        y0 = cy + r * math.sin(t)
+        z0 = cz
+        t += t
+        x1 = cx + r * math.cos(t)
+        y1 = cy + r * math.sin(t)
+        z1 = cz
+        add_edge(points, x0, y0, z0, x1, y1, z1)
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
     pass
 
-def draw_circle(cx, cy, cz, r, t):
-    t = t / (2 * math.pi)
-    while t < 2 * math.pi:
-        x = r * math.cos(cx)
-        y = r * math.sin(cy)
-
-        t += t
 
 def draw_lines( matrix, screen, color ):
     if len(matrix) < 2:
