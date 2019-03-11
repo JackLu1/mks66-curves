@@ -22,6 +22,6 @@ transform = new_matrix()
 #parse_file( 'script', edges, transform, screen, color )
 #parse_file( 'test_script', edges, transform, screen, color )
 
-add_circle(edges, 250, 250, 0, 200, 0.1)
+add_circle(edges, 250, 250, 0, 100, 0.01)
 draw_lines(edges, screen, color)
 display(screen)
