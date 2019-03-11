@@ -7,13 +7,13 @@ def add_circle( points, cx, cy, cz, r, step ):
     step = step * (2 * math.pi)
     #while t < 2 * math.pi:
     while theta < 2 * math.pi:
-        x0 = cx + r * math.cos(theta)
-        y0 = cy + r * math.sin(theta)
-        z0 = cz
+        x0 = int(cx) + int(r) * math.cos(theta)
+        y0 = int(cy) + int(r) * math.sin(theta)
+        z0 = int(cz)
         theta += step
-        x1 = cx + r * math.cos(theta)
-        y1 = cy + r * math.sin(theta)
-        z1 = cz
+        x1 = int(cx) + int(r) * math.cos(theta)
+        y1 = int(cy) + int(r) * math.sin(theta)
+        z1 = int(cz)
         add_edge(points, x0, y0, z0, x1, y1, z1)
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
