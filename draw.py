@@ -7,17 +7,43 @@ def add_circle( points, cx, cy, cz, r, step ):
     step = step * (2 * math.pi)
     #while t < 2 * math.pi:
     while theta < 2 * math.pi:
-        x0 = int(cx) + int(r) * math.cos(theta)
-        y0 = int(cy) + int(r) * math.sin(theta)
-        z0 = int(cz)
+        x0 = cx + r * math.cos(theta)
+        y0 = cy + r * math.sin(theta)
+        z0 = cz
         theta += step
-        x1 = int(cx) + int(r) * math.cos(theta)
-        y1 = int(cy) + int(r) * math.sin(theta)
-        z1 = int(cz)
+        x1 = cx + r * math.cos(theta)
+        y1 = cy + r * math.sin(theta)
+        z1 = cz
         add_edge(points, x0, y0, z0, x1, y1, z1)
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
-    pass
+    if curve_type == 'hermite':
+        tx = make_hermite()
+        ty = make_hermite()
+        px = new_matrix(4, 1)
+        py = new_matrix(4, 1)
+        #px = [x0, x1, x2, x3]
+        #py = [y0, y1, y2, y3]
+        px[0][0] = x0
+        px[0][1] = x1
+        px[0][2] = x2
+        px[0][3] = x3
+        py[0][0] = y0
+        py[0][1] = y1
+        py[0][2] = y2
+        py[0][3] = y3
+        matrix_mult( tx, px )
+        matrix_mult( ty, py )
+        print 'x'
+        print_matrix(tx)
+        print 'y'
+        print_matrix(ty)
+
+    #count = 0
+    #while count < 1:
+
+
+    #    count += step
 
 
 def draw_lines( matrix, screen, color ):

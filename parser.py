@@ -47,6 +47,7 @@ def parse_file( fname, edges, transform, screen, color ):
 
     f = open(fname)
     lines = f.readlines()
+    step = .01
 
     c = 0
     while c < len(lines):
@@ -90,10 +91,15 @@ def parse_file( fname, edges, transform, screen, color ):
             ident(transform)
 
         elif line == 'circle':
-            add_circle(edges, args[0], args[1], args[2], args[3], 0.01)
+            pass
+            #args = [int(x) for x in args]
+            #add_circle(edges, args[0], args[1], args[2], args[3], step)
         
+        #hermite: add a hermite curve to the edge matrix -
+        #         takes 8 arguments (x0, y0, x1, y1, rx0, ry0, rx1, ry1)
         elif line == 'hermite':
-            h = make_hermite()
+            args = [int(x) for x in args]
+            add_curve( edges, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], step, 'hermite')
 
         elif line == 'bezier':
             pass

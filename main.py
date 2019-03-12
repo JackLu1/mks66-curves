@@ -19,6 +19,7 @@ transform = new_matrix()
 #print
 #print_matrix( make_rotZ(math.pi/4) )
 
+#h = make_hermite()
 parse_file( 'script', edges, transform, screen, color )
 #parse_file( 'test_script', edges, transform, screen, color )
 
