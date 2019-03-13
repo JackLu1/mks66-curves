@@ -20,7 +20,7 @@ transform = new_matrix()
 #print_matrix( make_rotZ(math.pi/4) )
 
 #h = make_hermite()
-parse_file( 'script', edges, transform, screen, color )
+parse_file( 'test', edges, transform, screen, color )
 #parse_file( 'test_script', edges, transform, screen, color )
 
 # add_circle(edges, 250, 250, 0, 100, 0.01)

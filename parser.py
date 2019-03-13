@@ -91,18 +91,16 @@ def parse_file( fname, edges, transform, screen, color ):
             ident(transform)
 
         elif line == 'circle':
-            pass
-            #args = [int(x) for x in args]
-            #add_circle(edges, args[0], args[1], args[2], args[3], step)
+            args = [int(x) for x in args]
+            add_circle(edges, args[0], args[1], args[2], args[3], step)
         
-        #hermite: add a hermite curve to the edge matrix -
-        #         takes 8 arguments (x0, y0, x1, y1, rx0, ry0, rx1, ry1)
         elif line == 'hermite':
             args = [int(x) for x in args]
             add_curve( edges, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], step, 'hermite')
 
         elif line == 'bezier':
-            pass
+            args = [int(x) for x in args]
+            add_curve( edges, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], step, 'bezier')
 
         elif line == 'apply':
             matrix_mult( transform, edges )

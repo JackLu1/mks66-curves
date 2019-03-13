@@ -18,32 +18,39 @@ def add_circle( points, cx, cy, cz, r, step ):
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
     if curve_type == 'hermite':
-        tx = make_hermite()
-        ty = make_hermite()
-        px = new_matrix(4, 1)
-        py = new_matrix(4, 1)
-        #px = [x0, x1, x2, x3]
-        #py = [y0, y1, y2, y3]
-        px[0][0] = x0
-        px[0][1] = x1
-        px[0][2] = x2
-        px[0][3] = x3
-        py[0][0] = y0
-        py[0][1] = y1
-        py[0][2] = y2
-        py[0][3] = y3
-        matrix_mult( tx, px )
-        matrix_mult( ty, py )
-        print 'x'
-        print_matrix(tx)
-        print 'y'
-        print_matrix(ty)
+        t = make_hermite()
+    elif curve_type == 'bezier':
+        t = make_bezier()
 
-    #count = 0
-    #while count < 1:
+    px = new_matrix(4, 1)
+    py = new_matrix(4, 1)
+    px[0][0] = x0
+    px[0][1] = x1
+    px[0][2] = x2
+    px[0][3] = x3
+    py[0][0] = y0
+    py[0][1] = y1
+    py[0][2] = y2
+    py[0][3] = y3
+    matrix_mult( t, px )
+    matrix_mult( t, py )
+    ax = px[0][0]
+    bx = px[0][1]
+    cx = px[0][2]
+    dx = px[0][3]
+    ay = py[0][0]
+    by = py[0][1]
+    cy = py[0][2]
+    dy = py[0][3]
 
-
-    #    count += step
+    count = 0
+    while count < 1:
+        point_x0 = ax * math.pow(count, 3) + bx * math.pow(count, 2) + cx * count + dx
+        point_y0 = ay * math.pow(count, 3) + by * math.pow(count, 2) + cy * count + dy
+        count += step
+        point_x1 = ax * math.pow(count, 3) + bx * math.pow(count, 2) + cx * count + dx
+        point_y1 = ay * math.pow(count, 3) + by * math.pow(count, 2) + cy * count + dy
+        add_edge(points, point_x0, point_y0, 0, point_x1, point_y1, 0)
 
 
 def draw_lines( matrix, screen, color ):

@@ -10,7 +10,18 @@ z0  z1  ... zn
 import math
 
 def make_bezier():
-    pass
+    b = new_matrix()
+    b[0][0] = -1
+    b[0][1] = 3
+    b[0][2] = -3
+    b[0][3] = 1
+    b[1][0] = 3
+    b[1][1] = -6
+    b[1][2] = 3
+    b[2][0] = -3
+    b[2][1] = 3
+    b[3][0] = 1
+    return b
 
 def make_hermite():
     h = new_matrix()
