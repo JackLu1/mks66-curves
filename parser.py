@@ -41,7 +41,7 @@ The file follows the following format:
 
 See the file script for an example of the file format
 """
-ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save', 'circle', 'bezier', 'hermite']
+ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save', 'circle', 'bezier', 'hermite', 'color']
 
 def parse_file( fname, edges, transform, screen, color ):
 
@@ -101,6 +101,13 @@ def parse_file( fname, edges, transform, screen, color ):
         elif line == 'bezier':
             args = [int(x) for x in args]
             add_curve( edges, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], step, 'bezier')
+
+        elif line == 'color':
+            args = [int(x) for x in args]
+            color = [args[0], args[1], args[2]]
+
+        elif line == 'draw':
+            draw_lines(edges, screen, color)
 
         elif line == 'apply':
             matrix_mult( transform, edges )
